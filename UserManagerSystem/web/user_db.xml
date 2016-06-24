@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+    <user id="u001">
+        <name>lujiahao</name>
+        <password>123</password>
+        <gender>男</gender>
+        <age>18</age>
+    </user>
+</users>
