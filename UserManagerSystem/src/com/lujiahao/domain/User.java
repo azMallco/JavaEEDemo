@@ -11,6 +11,16 @@ public class User {
     private String gender;
     private String age;// 因为服务器传过来的数据都是string类型的
 
+    public User() {}
+
+    public User(String id, String username, String password, String gender, String age) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.gender = gender;
+        this.age = age;
+    }
+
     public String getId() {
         return id;
     }

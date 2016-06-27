@@ -1,9 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <users>
     <user id="u001">
-        <name>lujiahao</name>
-        <password>123</password>
+        <username>路家豪</username>
+        <password>1234</password>
         <gender>男</gender>
+        <age>18</age>
+    </user>
+    <user id="u002">
+        <username>李凡凡</username>
+        <password>1234</password>
+        <gender>女</gender>
         <age>18</age>
     </user>
 </users>

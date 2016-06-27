@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 public class XmlUtils {
     // TODO 数据库位置,后期更改
-    private static String xmlPath = "\\web\\user_db.xml";
+    private static String xmlPath = "D:\\projects\\JavaEEDemo\\UserManagerSystem\\web\\user_db.xml";
 
     /**
      * 获取document对象
