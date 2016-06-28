@@ -5,6 +5,7 @@ import com.lujiahao.utils.XmlUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
+import org.dom4j.Node;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,23 @@ public class UserDao {
      * @param user 用户bean
      */
     public void save(User user) {
-
+        try {
+            // 1.获得document
+            Document document = XmlUtils.getDocument();
+            // 2.获得根元素
+            Element rootElement = document.getRootElement();
+            // 3.给根元素添加user元素
+            Element userElement = rootElement.addElement("user");
+            userElement.addAttribute("id",user.getId());
+            userElement.addElement("username").setText(user.getUsername());
+            userElement.addElement("password").setText(user.getPassword());
+            userElement.addElement("gender").setText(user.getGender());
+            userElement.addElement("age").setText(user.getAge());
+            // 4.回写
+            XmlUtils.saveXml(document);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -59,15 +76,7 @@ public class UserDao {
             List<Element> allElement = rootElement.elements("user");
             // 4.遍历
             for (Element element : allElement) {
-                String id = element.attributeValue("id");
-                String username = element.element("username").getText();
-                String password = element.elementText("password");
-                String gender = element.elementText("gender");
-                String age = element.elementText("age");
-
-                // 封装javabean
-                User user = new User(id,username,password,gender,age);
-                list.add(user);
+                list.add(elementToUser(element));
             }
             return list;
         } catch (Exception e) {
@@ -82,6 +91,51 @@ public class UserDao {
      * @return 查询的用户信息
      */
     public User findById(String id) {
-        return null;
+        try {
+            Document document = XmlUtils.getDocument();
+            Element userElement = (Element) document.selectSingleNode("//user[@id='"+id+"']");
+            if (userElement == null) {
+                return null;
+            }
+            return elementToUser(userElement);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 将element封装到javabean中
+     * @param userElement
+     * @return
+     */
+    private User elementToUser(Element userElement){
+        String id = userElement.attributeValue("id");
+        String username = userElement.element("username").getText();
+        String password = userElement.elementText("password");
+        String gender = userElement.elementText("gender");
+        String age = userElement.elementText("age");
+
+        // 封装javabean
+        User user = new User(id,username,password,gender,age);
+        return user;
+    }
+
+    /**
+     * 通过用户名和密码查询用户信息
+     * @param username
+     * @param password
+     * @return
+     */
+    public User find(String username, String password) {
+        try {
+            Document document = XmlUtils.getDocument();
+            Element userElement = (Element) document.selectSingleNode("//user[username='"+username+"' and password='"+password+"']");
+            if (userElement == null) {
+                return null;
+            }
+            return elementToUser(userElement);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 }

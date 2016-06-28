@@ -12,6 +12,7 @@
     <title>所有用户信息</title>
 </head>
 <body>
+    <%@include file="header.jsp"%>
     <table border="1">
         <tr>
             <td>编号</td>
@@ -24,7 +25,10 @@
                 <td>${vs.count}</td>
                 <td>${user.id}</td>
                 <td>${user.username}</td>
-                <td>查询详情 修改 删除</td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/FindUserByIdServlet?id=${user.id}"> 查询详情</a>
+                    <a href="${pageContext.request.contextPath}/PreEditUserServlet?id=${user.id}"> 修改</a>
+                    删除</td>
             </tr>
         </c:forEach>
     </table>

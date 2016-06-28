@@ -21,4 +21,31 @@ public class UserService {
         List<User> allUser = userDao.findAll();
         return allUser;
     }
+
+    /**
+     * 通过id查询用户信息
+     * @param id
+     * @return
+     */
+    public User findUserById(String id) {
+        User user = userDao.findById(id);
+        return user;
+    }
+
+    /**
+     * 注册
+     * @param user
+     */
+    public void register(User user) {
+        userDao.save(user);
+    }
+
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
+    public User login(User user) {
+        return userDao.find(user.getUsername(),user.getPassword());
+    }
 }
