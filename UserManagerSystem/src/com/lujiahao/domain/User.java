@@ -1,4 +1,5 @@
 package com.lujiahao.domain;
+
 /**
  * 用户信息的Bean
  * Created by lujiahao
@@ -11,7 +12,8 @@ public class User {
     private String gender;
     private String age;// 因为服务器传过来的数据都是string类型的
 
-    public User() {}
+    public User() {
+    }
 
     public User(String username, String password) {
         this.username = username;
@@ -65,4 +67,5 @@ public class User {
     public void setAge(String age) {
         this.age = age;
     }
+
 }

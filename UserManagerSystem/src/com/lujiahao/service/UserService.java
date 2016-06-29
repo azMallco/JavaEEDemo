@@ -48,4 +48,13 @@ public class UserService {
     public User login(User user) {
         return userDao.find(user.getUsername(),user.getPassword());
     }
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    public User editUser(User user) {
+        return userDao.update(user);
+    }
 }

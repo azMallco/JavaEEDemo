@@ -23,11 +23,14 @@
 </head>
 <body onload="setGender();">
 <%@include file="header.jsp" %>
-<form action="" method="post">
+<c:if test="${not empty msg}">
+    ${msg}<br/>
+</c:if>
+<form action="${pageContext.request.contextPath}/EditUserServlet" method="post">
     <table border="1">
         <tr>
             <td>员工号</td>
-            <td>${userById.id}</td>
+            <td><input type="text" name="id" value="${userById.id}"/></td>
         </tr>
         <tr>
             <td>姓名</td>
@@ -35,7 +38,7 @@
         </tr>
         <tr>
             <td>密码</td>
-            <td><input type="password" name="password" value="${userById.password}"/></td>
+            <td><input type="text" name="password" value="${userById.password}"/></td>
         </tr>
         <tr>
             <td>性别</td>

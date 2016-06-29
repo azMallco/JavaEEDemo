@@ -47,8 +47,19 @@ public class UserDao {
      *
      * @param user
      */
-    public void update(User user) {
-
+    public User update(User user) {
+        try {
+            Document document = XmlUtils.getDocument();
+            Element userElement = (Element) document.selectSingleNode("//user[@id='"+user.getId()+"']");
+            userElement.element("username").setText(user.getUsername());
+            userElement.element("password").setText(user.getPassword());
+            userElement.element("gender").setText(user.getGender());
+            userElement.element("age").setText(user.getAge());
+            XmlUtils.saveXml(document);
+            return elementToUser(userElement);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     /**
