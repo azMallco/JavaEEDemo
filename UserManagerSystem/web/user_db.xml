@@ -18,5 +18,11 @@
     <password>123</password>  
     <gender>男</gender>  
     <age>123</age> 
+  </user>  
+  <user id="123">
+    <username>123</username>
+    <password>123</password>
+    <gender>男</gender>
+    <age>123</age>
   </user>
 </users>

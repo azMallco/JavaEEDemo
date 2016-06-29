@@ -3,6 +3,7 @@ package com.lujiahao.web.servlet.authentication;
 import com.lujiahao.domain.User;
 import com.lujiahao.service.UserService;
 import com.lujiahao.service.impl.UserServiceImpl;
+import com.lujiahao.utils.MyBeanUtils;
 import com.lujiahao.web.bean.UserFormBean;
 
 import javax.servlet.ServletException;
@@ -24,17 +25,18 @@ public class RegisterUserServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         try {
             // 1.获取请求参数
-            String id = request.getParameter("id");
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String repassword = request.getParameter("repassword");
-            String gender = request.getParameter("gender");
-            String age = request.getParameter("age");
-
-            /**
-             * 数据校验
-             */
-            UserFormBean userFormBean = new UserFormBean(id,username,password,repassword,gender,age);
+//            String id = request.getParameter("id");
+//            String username = request.getParameter("username");
+//            String password = request.getParameter("password");
+//            String repassword = request.getParameter("repassword");
+//            String gender = request.getParameter("gender");
+//            String age = request.getParameter("age");
+//
+//            /**
+//             * 数据校验
+//             */
+//            UserFormBean userFormBean = new UserFormBean(id,username,password,repassword,gender,age);
+            UserFormBean userFormBean = MyBeanUtils.populate(UserFormBean.class,request.getParameterMap());
             if (!userFormBean.validate()){
                 // 没有校验成功 表单中显示相应的信息
                 request.setAttribute("userFormBean",userFormBean);// 提交数据,提示信息
@@ -44,7 +46,8 @@ public class RegisterUserServlet extends HttpServlet {
 
 
             // 2.封装到User对象中
-            User user = new User(id, username, password, gender, age);
+            //User user = new User(id, username, password, gender, age);
+            User user = MyBeanUtils.populate(User.class,request.getParameterMap());
 
             // 3.执行注册方法
             UserService userService = new UserServiceImpl();
