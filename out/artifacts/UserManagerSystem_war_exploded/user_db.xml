@@ -19,10 +19,10 @@
     <gender>男</gender>  
     <age>123</age> 
   </user>  
-  <user id="1111">
-    <username>11111</username>
-    <password>1111</password>
-    <gender>女</gender>
-    <age>11111</age>
-  </user>
+  <user id="1111"> 
+    <username>11111</username>  
+    <password>1111</password>  
+    <gender>女</gender>  
+    <age>11111</age> 
+  </user> 
 </users>

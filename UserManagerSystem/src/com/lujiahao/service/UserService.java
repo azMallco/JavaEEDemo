@@ -57,4 +57,13 @@ public class UserService {
     public User editUser(User user) {
         return userDao.update(user);
     }
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    public User deleteUser(String id) {
+        return userDao.delete(id);
+    }
 }

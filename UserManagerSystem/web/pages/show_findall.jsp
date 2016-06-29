@@ -13,6 +13,9 @@
 </head>
 <body>
     <%@include file="header.jsp"%>
+    <c:if test="${not empty msg}">
+        ${msg}<br/>
+    </c:if>
     <table border="1">
         <tr>
             <td>编号</td>
@@ -28,7 +31,7 @@
                 <td>
                     <a href="${pageContext.request.contextPath}/FindUserByIdServlet?id=${user.id}"> 查询详情</a>
                     <a href="${pageContext.request.contextPath}/PreEditUserServlet?id=${user.id}"> 修改</a>
-                    删除</td>
+                    <a href="${pageContext.request.contextPath}/DeleteUserServlet?id=${user.id}">删除</a></td>
             </tr>
         </c:forEach>
     </table>

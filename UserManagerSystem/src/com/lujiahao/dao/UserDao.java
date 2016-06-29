@@ -67,8 +67,20 @@ public class UserDao {
      *
      * @param id 用户id
      */
-    public void delete(String id) {
-
+    public User delete(String id) {
+        try {
+            Document document = XmlUtils.getDocument();
+            Element userElement = (Element) document.selectSingleNode("//user[@id='"+id+"']");
+            if (userElement == null) {
+                return null;
+            }
+            Element userElementParent = userElement.getParent();
+            userElementParent.remove(userElement);
+            XmlUtils.saveXml(document);
+            return elementToUser(userElement);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     /**
