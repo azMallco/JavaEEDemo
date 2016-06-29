@@ -2,6 +2,7 @@ package com.lujiahao.web.servlet.authentication;
 
 import com.lujiahao.domain.User;
 import com.lujiahao.service.UserService;
+import com.lujiahao.web.bean.UserFormBean;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,8 +26,22 @@ public class RegisterUserServlet extends HttpServlet {
             String id = request.getParameter("id");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            String repassword = request.getParameter("repassword");
             String gender = request.getParameter("gender");
             String age = request.getParameter("age");
+
+            /**
+             * 数据校验
+             */
+            UserFormBean userFormBean = new UserFormBean(id,username,password,repassword,gender,age);
+            if (!userFormBean.validate()){
+                // 没有校验成功 表单中显示相应的信息
+                request.setAttribute("userFormBean",userFormBean);// 提交数据,提示信息
+                request.getRequestDispatcher("/pages/register.jsp").forward(request,response);
+                return;
+            }
+
+
             // 2.封装到User对象中
             User user = new User(id, username, password, gender, age);
 
