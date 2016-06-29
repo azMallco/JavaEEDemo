@@ -2,13 +2,13 @@ package com.lujiahao.web.servlet.edit;
 
 import com.lujiahao.domain.User;
 import com.lujiahao.service.UserService;
+import com.lujiahao.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * 修改用户信息
@@ -30,7 +30,7 @@ public class EditUserServlet extends HttpServlet {
         String age = request.getParameter("age");
         User user = new User(id, username, password, gender, age);
 
-        UserService userService = new UserService();
+        UserService userService = new UserServiceImpl();
         User userById = userService.editUser(user);// 成功返回修改好的user,没成功返回旧的user
         // 这里的逻辑和登录的逻辑十分相似
         if (userById != null) {

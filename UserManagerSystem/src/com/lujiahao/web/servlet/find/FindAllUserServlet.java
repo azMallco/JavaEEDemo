@@ -2,6 +2,7 @@ package com.lujiahao.web.servlet.find;
 
 import com.lujiahao.domain.User;
 import com.lujiahao.service.UserService;
+import com.lujiahao.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +24,7 @@ public class FindAllUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // 2.service层对象实例
-        UserService userService = new UserService();
+        UserService userService = new UserServiceImpl();
         List<User> allUser = userService.findAllUser();
 
         // 3.使用请求转发到show_findall.jsp界面显示数据

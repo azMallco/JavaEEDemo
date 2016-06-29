@@ -2,6 +2,7 @@ package com.lujiahao.web.servlet.authentication;
 
 import com.lujiahao.domain.User;
 import com.lujiahao.service.UserService;
+import com.lujiahao.service.impl.UserServiceImpl;
 import com.lujiahao.web.bean.UserFormBean;
 
 import javax.servlet.ServletException;
@@ -46,7 +47,7 @@ public class RegisterUserServlet extends HttpServlet {
             User user = new User(id, username, password, gender, age);
 
             // 3.执行注册方法
-            UserService userService = new UserService();
+            UserService userService = new UserServiceImpl();
             userService.register(user);
 
             // 4.没有异常,说明注册成功

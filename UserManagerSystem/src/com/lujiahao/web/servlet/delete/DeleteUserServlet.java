@@ -2,6 +2,7 @@ package com.lujiahao.web.servlet.delete;
 
 import com.lujiahao.domain.User;
 import com.lujiahao.service.UserService;
+import com.lujiahao.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,7 @@ public class DeleteUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
-        UserService userService = new UserService();
+        UserService userService = new UserServiceImpl();
         User deleteUser = userService.deleteUser(id);
         if (deleteUser != null) {
             // 删除成功 提示

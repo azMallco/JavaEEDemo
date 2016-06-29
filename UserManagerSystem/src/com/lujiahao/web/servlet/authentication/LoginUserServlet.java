@@ -2,6 +2,7 @@ package com.lujiahao.web.servlet.authentication;
 
 import com.lujiahao.domain.User;
 import com.lujiahao.service.UserService;
+import com.lujiahao.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ public class LoginUserServlet extends HttpServlet {
         User user = new User(username,password);
 
         // 2.用户执行登录
-        UserService userService = new UserService();
+        UserService userService = new UserServiceImpl();
         User loginUser = userService.login(user);
 
         if (loginUser != null) {

@@ -2,6 +2,7 @@ package com.lujiahao.web.servlet.find;
 
 import com.lujiahao.domain.User;
 import com.lujiahao.service.UserService;
+import com.lujiahao.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,7 @@ public class FindUserByIdServlet extends HttpServlet {
         // 1.获得请求参数id的值
         String id = request.getParameter("id");
         // 2.通过service查询用户
-        UserService userService = new UserService();
+        UserService userService = new UserServiceImpl();
         User user = userService.findUserById(id);
 
         // 3.使用请求转发显示数据
