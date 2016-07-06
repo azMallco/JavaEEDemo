@@ -31,16 +31,15 @@ public class EditUserServlet extends HttpServlet {
         User user = new User(id, username, password, gender, age);
 
         UserService userService = new UserServiceImpl();
-        User userById = userService.editUser(user);// 成功返回修改好的user,没成功返回旧的user
+        int i = userService.editUser(user);// 成功返回修改好的user,没成功返回旧的user
         // 这里的逻辑和登录的逻辑十分相似
-        if (userById != null) {
+        if (i == 1) {
             // 修改成功 重定向到首页
             response.sendRedirect(request.getContextPath() + "/index.jsp");
         } else {
             // 修改失败 请求转发到消息页面
             request.setAttribute("msg", "修改失败,请重试");
-            request.setAttribute("userById", userById);
-            request.getRequestDispatcher("/pages/edit_user.jsp").forward(request, response);
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
 

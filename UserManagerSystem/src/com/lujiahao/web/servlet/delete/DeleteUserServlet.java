@@ -24,8 +24,8 @@ public class DeleteUserServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         UserService userService = new UserServiceImpl();
-        User deleteUser = userService.deleteUser(id);
-        if (deleteUser != null) {
+        int i = userService.deleteUser(id);
+        if (i == 1) {
             // 删除成功 提示
             request.setAttribute("msg","删除成功");
         } else {

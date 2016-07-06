@@ -16,7 +16,7 @@ public interface UserService {
 
     User login(User user);
 
-    User editUser(User user);
+    int editUser(User user);
 
-    User deleteUser(String id);
+    int deleteUser(String id);
 }

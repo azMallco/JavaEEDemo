@@ -2,12 +2,13 @@ package com.lujiahao.dao.impl;
 
 import com.lujiahao.dao.UserDao;
 import com.lujiahao.domain.User;
+import com.lujiahao.utils.JdbcUtils;
 import com.lujiahao.utils.XmlUtils;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.Node;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,8 @@ import java.util.List;
  * Created by lujiahao
  * Created at 2016/6/24 17:16
  */
-public class UserDaoImpl implements UserDao {
+public class UserDaoXmlImpl implements UserDao {
+
     /**
      * 添加方法
      *
@@ -50,7 +52,7 @@ public class UserDaoImpl implements UserDao {
      * @param user
      */
     @Override
-    public User update(User user) {
+    public int update(User user) {
         try {
             Document document = XmlUtils.getDocument();
             Element userElement = (Element) document.selectSingleNode("//user[@id='"+user.getId()+"']");
@@ -59,7 +61,7 @@ public class UserDaoImpl implements UserDao {
             userElement.element("gender").setText(user.getGender());
             userElement.element("age").setText(user.getAge());
             XmlUtils.saveXml(document);
-            return elementToUser(userElement);
+            return 1;
         } catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -71,17 +73,17 @@ public class UserDaoImpl implements UserDao {
      * @param id 用户id
      */
     @Override
-    public User delete(String id) {
+    public int delete(String id) {
         try {
             Document document = XmlUtils.getDocument();
             Element userElement = (Element) document.selectSingleNode("//user[@id='"+id+"']");
             if (userElement == null) {
-                return null;
+                return 0;
             }
             Element userElementParent = userElement.getParent();
             userElementParent.remove(userElement);
             XmlUtils.saveXml(document);
-            return elementToUser(userElement);
+            return 1;
         } catch (Exception e){
             throw new RuntimeException(e);
         }
