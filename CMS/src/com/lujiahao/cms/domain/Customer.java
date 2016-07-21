@@ -9,6 +9,7 @@ import java.util.Date;
 public class Customer {
     private String id;
     private String name;
+    private String pwd;
     private String gender;
 
     private Date birthday;
@@ -18,16 +19,27 @@ public class Customer {
     private String preference;
     private String[] preferenceArr;// 表单提交多个爱好
 
-    public String[] getPreferenceArr() {
-        return preferenceArr;
-    }
-
-    public void setPreferenceArr(String[] preferenceArr) {
-        this.preferenceArr = preferenceArr;
-    }
-
     private String type;
     private String description;
+
+    private String startBirthday;
+    private String endBirthday;
+
+    public String getStartBirthday() {
+        return startBirthday;
+    }
+
+    public void setStartBirthday(String startBirthday) {
+        this.startBirthday = startBirthday;
+    }
+
+    public String getEndBirthday() {
+        return endBirthday;
+    }
+
+    public void setEndBirthday(String endBirthday) {
+        this.endBirthday = endBirthday;
+    }
 
     public String getId() {
         return id;
@@ -77,6 +89,14 @@ public class Customer {
         this.email = email;
     }
 
+    public String[] getPreferenceArr() {
+        return preferenceArr;
+    }
+
+    public void setPreferenceArr(String[] preferenceArr) {
+        this.preferenceArr = preferenceArr;
+    }
+
     public String getPreference() {
         if (preferenceArr != null) {
             StringBuilder builder = new StringBuilder();
@@ -110,6 +130,14 @@ public class Customer {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     @Override

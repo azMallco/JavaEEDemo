@@ -1,0 +1,128 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    background: url(/images/bg-login.jpg) no-repeat top center;
+    background-size: cover;
+    min-height: 100%
+}
+
+.login-container {
+    width: 380px;
+    height: 508px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -254px 0 0 -190px;
+    background: -webkit-linear-gradient(top, rgba(41, 49, 119, 1), rgba(41, 49, 119, .4));
+}
+
+.login-container p {
+    margin: 0 30px 0 30px;
+}
+
+.login-container p img {
+    width: 100%;
+    padding: 60px 0;
+}
+
+.input-login {
+    display: block;
+    width: 70%;
+    margin: 0 auto 20px;
+    height: 44px;
+    line-height: 44px;
+    color: #fff;
+    font-size: 14px;
+    background: rgba(115, 115, 229, .5);
+    border: none;
+    padding: 0 15px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.rem-container {
+    padding-bottom: 24px;
+    width: 80%;
+    margin: 0 auto 20px;
+    color: #fff;
+}
+
+.rem-container a {
+    color: #fff;
+    cursor: pointer;
+}
+
+.rem-container a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ga-checkbox {
+    vertical-align: center;
+    height: 15px;
+    float: left;
+    font-size: 16px;
+    letter-spacing: -1px;
+    margin-right: 10px;
+}
+
+.ga-checkbox .ng-pristine {
+    margin-right: 5px;
+    padding-top: 3px;
+}
+
+.btn-login {
+    display: block;
+    width: 80%;
+    margin: 0px auto;
+    font-size: 16px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    background: #2FA92B;
+    color: #fff;
+    border: none;
+}
+.btn-login:hover {
+    background-color: #2F992B;
+}
+
+.btn-register {
+    display: block;
+    width: 80%;
+    margin: 0px auto;
+    font-size: 16px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    background: #847aff;
+    color: #fff;
+    border: none;
+}
+.btn-register:hover {
+    background-color: #6c63d9;
+}
+
+/*.ga-checkbox input:checked + b:after {*/
+    /*content: url(/images/icon-checkbox.png);*/
+    /*position: relative;*/
+    /*top: -5px*/
+/*}*/
+

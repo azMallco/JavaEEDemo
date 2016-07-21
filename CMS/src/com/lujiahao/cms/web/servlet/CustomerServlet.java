@@ -33,13 +33,39 @@ public class CustomerServlet extends HttpServlet {
             preEdit(request,response);
         } else if ("edit".equals(method)){
             edit(request,response);
+        } else if ("findAllWithCondition".equals(method)){
+            findAllWithCondition(request,response);
+        }
+    }
+
+    /**
+     * 查询所有--条件查询
+     */
+    protected void findAllWithCondition(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            // 1.获得数据并封装
+            Customer customer = LBeanUtils.populate(Customer.class,request.getParameterMap());
+            // 2.通知service查询所有
+            CustomerServeice customerServeice = new CustomerServiceImpl();
+            List<Customer> allCustomer = customerServeice.findAllCustomerWithCondition(customer);
+
+            // 3.显示
+            // 存放到request作用域中--每一次查询都是新的数据
+            request.setAttribute("allCustomer",allCustomer);
+            request.setAttribute("customer",customer);
+            // servlet到jsp中显示,一次请求需要使用请求转发
+            request.getRequestDispatcher("/pages/show_all_condition.jsp").forward(request,response);
+        } catch (Exception e){
+            // 1.打印日志
+            e.printStackTrace();
+            // 2.请求转发到消息界面
+            request.setAttribute("msg","查询失败,请稍后重试.");
+            request.getRequestDispatcher("/pages/message.jsp").forward(request,response);
         }
     }
 
     /**
      * 修改数据
-     * @param request
-     * @param response
      */
     protected void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {

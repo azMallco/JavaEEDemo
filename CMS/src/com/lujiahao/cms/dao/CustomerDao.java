@@ -34,9 +34,24 @@ public interface CustomerDao {
     public List<Customer> findAll();
 
     /**
+     * 条件查询
+     * @param sql
+     * @param params
+     * @return
+     */
+    public List<Customer> findAll(String sql,Object[] params);
+
+    /**
      * 通过Id查询
      * @param id
      * @return
      */
     public Customer findById(String id);
+
+    /**
+     * 通过name查询
+     * @param name
+     * @return
+     */
+    public Customer findByNameAndPwd(String name,String pwd);
 }

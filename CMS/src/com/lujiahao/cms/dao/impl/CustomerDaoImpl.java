@@ -70,10 +70,30 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
+    public List<Customer> findAll(String sql, Object[] params) {
+        try {
+            return runner.query(sql,new BeanListHandler<Customer>(Customer.class),params);
+        } catch (Exception e){
+            throw new DaoException(e);
+        }
+    }
+
+    @Override
     public Customer findById(String id) {
         try {
             String sql = "select * from t_customer where id=?";
             Object[] params = {id};
+            return runner.query(sql,new BeanHandler<Customer>(Customer.class),params);
+        } catch (Exception e){
+            throw new DaoException(e);
+        }
+    }
+
+    @Override
+    public Customer findByNameAndPwd(String name,String pwd) {
+        try {
+            String sql = "select * from t_customer where name=? and pwd=?";
+            Object[] params = {name,pwd};
             return runner.query(sql,new BeanHandler<Customer>(Customer.class),params);
         } catch (Exception e){
             throw new DaoException(e);

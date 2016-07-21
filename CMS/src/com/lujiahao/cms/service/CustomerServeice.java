@@ -10,6 +10,13 @@ import java.util.List;
 public interface CustomerServeice {
 
     /**
+     * 登录
+     * @param customer
+     * @return
+     */
+    public Customer login(Customer customer);
+
+    /**
      * 添加客户
      * @param customer
      */
@@ -39,4 +46,13 @@ public interface CustomerServeice {
      * @return
      */
     public Customer findCustomerById(String id);
+
+    /**
+     * 条件查询
+     * @param customer
+     * @return
+     */
+    public List<Customer> findAllCustomerWithCondition(Customer customer);
+
+
 }
