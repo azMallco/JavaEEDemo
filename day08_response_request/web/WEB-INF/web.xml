@@ -4,13 +4,28 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-
     <servlet>
         <servlet-name>DemoServlet</servlet-name>
         <servlet-class>com.lujiahao.servlet.DemoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RedirectServlet</servlet-name>
+        <servlet-class>com.lujiahao.servlet.RedirectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OutBufferServlet</servlet-name>
+        <servlet-class>com.lujiahao.servlet.OutBufferServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DemoServlet</servlet-name>
         <url-pattern>/DemoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RedirectServlet</servlet-name>
+        <url-pattern>/RedirectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OutBufferServlet</servlet-name>
+        <url-pattern>/OutBufferServlet</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -39,7 +39,7 @@ public class DemoServlet extends HttpServlet {
 
         // 7.发布到tomcat下的项目名称
         String contextPath = request.getContextPath();
-        System.out.println(contextPath);
+        System.out.println("++"+contextPath);
 
         // 8.servlet路径
         String servletPath = request.getServletPath();
