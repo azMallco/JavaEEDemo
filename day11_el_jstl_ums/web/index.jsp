@@ -11,6 +11,7 @@
     <title>$Title$</title>
 </head>
 <body>
-  <a href="${pageContext.request.contextPath}/el_base.jsp">el基础语法</a>
+    <a href="${pageContext.request.contextPath}/el_base.jsp">el基础语法</a><br/>
+    <a href="${pageContext.request.contextPath}/el_function.jsp">el函数</a><br/>
 </body>
 </html>
